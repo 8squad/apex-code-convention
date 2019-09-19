@@ -533,3 +533,22 @@ class SomeClass {
     public String m_someString;
 }
 ```
+
+## Further Reading
+
+### Apex Code Best Practices
+###### by Salesforce
+https://developer.salesforce.com/page/Apex_Code_Best_Practices
+
+### Clean Code
+###### by Robert C Martin
+https://www.amazon.com.au/dp/0132350882
+
+
+### The Clean Coder
+###### by Robert C Martin
+https://www.amazon.com.au/dp/0137081073
+
+### Clean Architecture
+###### by Robert C Martin
+https://www.amazon.com.au/dp/0134494164
