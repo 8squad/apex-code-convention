@@ -473,13 +473,27 @@ One blank line SHOULD be used in the following circumstances:
 
 ## Common Mistakes / Anti-Patterns
 
+### SOQL Query List Initialisation
+
 Don't initialise the results of a SOQL query into a list. A SOQL query always returns a list.
+
+#### Bad
 
 ```apex
 List<SObject> sobjList = new List<SObject>([SELECT Id FROM SObject]);
 ```
 
+#### Good
+
+```apex
+List<SObject> sobjList = [SELECT Id FROM SObject];
+```
+
+### Empty List Check Before DML
+
 Don't check if a list is empty before performing DML. Performing DML on an empty list does not count towards DML limits.
+
+#### Bad
 
 ```apex
 if (!conList.isEmpty()) {
@@ -487,50 +501,87 @@ if (!conList.isEmpty()) {
 }
 ```
 
-When querying for a record, don't run the query and check that the resulting list is not empty, and use the first result. Always iterate over the result list, or properly handle multiple returned records.
-
+#### Good
 
 ```apex
-// BAD
+INSERT conList;
+```
+
+### Retrieving One Record With SOQL
+
+When querying for a record, don't run the query and check that the resulting list is not empty, and use the first result. Always iterate over the result list, or properly handle multiple returned records.
+
+#### Bad
+
+```apex
 List<Contact> conList = [SELECT Id FROM Contact WHERE Conditions];
 if (!conList.isEmpty()) {
     con = conList[0];
 }
 ```
 
+#### Good
+
 ```apex
 // GOOD
 for (Contact c : [SELECT Id FROM Contact WHERE Conditions]) {
     con = c;
+    break;  // optional - use this if you're sorting and only want the *first* one
 }
 ```
 
+### Include Id in SOQL
+
 Always query for the Id of an SObject in SOQL, even if you're not going to explicitly use it later.
+
+#### Bad
+
+```apex
+List<Contact> conList = [SELECT Fields... FROM Contact];
+```
+
+#### Good
 
 ```apex
 List<Contact> conList = [SELECT Id, Fields... FROM Contact];
 ```
 
+### Instantiate SObjects With Fields
+
 Avoid instantiating an SObject and setting its properties later.
 
+#### Bad
+
 ```apex
-// BAD
 Contact con = new Contact();
 con.LastName = 'Jackman';
 ```
 
+#### Good
+
 ```apex
-// GOOD
 Contact con = new Contact(
   LastName = 'Jackman'
 );
 ```
 
+### Instance/Member Variable Prefixes
+
 Do not prefix instance variables with `m_`.
+
+#### Bad
 
 ```apex
 class SomeClass {
     public String m_someString;
+}
+```
+
+#### Good
+
+```apex
+class SomeClass {
+    public String someString;
 }
 ```
 
