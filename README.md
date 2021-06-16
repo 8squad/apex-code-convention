@@ -22,29 +22,29 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ### Classes
 
-As per Object Oriented Programming language rules, class names SHOULD be nouns. They SHOULD define or describe a thing or entity. The class name SHOULD be simple and descriptive. The first letter of each word in the class name MUST be capitalised (Pascal Case). Acronyms and abbreviations SHOULD be used sparingly and economically to avoid confusion. Underscores or other special characters MUST NOT be used in a class name.  
+As per Object Oriented Programming language rules, class names SHOULD be nouns. They SHOULD define or describe a thing or entity. The class name SHOULD be simple and descriptive. The first letter of each word in the class name MUST be capitalised (Pascal Case). Acronyms and abbreviations SHOULD be used sparingly and economically to avoid confusion. Underscores or other special characters MUST NOT be used in a class name.
 e.g. `Account`, `RevenueDepartment`, `MinecraftVehicle`
 
 There are a few RECOMMENDED variations for different types of classes, detailed below.
 
 #### Batch Apex Class
 
-The class name SHOULD be suffixed by 'Batch'.  
+The class name SHOULD be suffixed by 'Batch'.
 e.g. `AccountRefundBatch`, `ValidateOpportunityBatch`
 
 #### Schedulable Apex Class
 
-The class name SHOULD be suffixed by 'Schedulable'.  
+The class name SHOULD be suffixed by 'Schedulable'.
 e.g. `AccountRefundSchedulable`, `ValidateOpportunitySchedulable`
 
 #### Visualforce Controller
 
-The class name SHOULD be suffixed by `Controller`.  
+The class name SHOULD be suffixed by `Controller`.
 e.g. `SolarEnergyController`, `NewAccountController`
 
 #### Trigger
 
-The main SObject trigger name SHOULD be suffixed by `Trigger`, and the handler class SHOULD be suffixed by `TriggerHandler`.  
+The main SObject trigger name SHOULD be suffixed by `Trigger`, and the handler class SHOULD be suffixed by `TriggerHandler`.
 e.g. `AccountTrigger`, `AccountTriggerHandler`
 
 #### Test Classes
@@ -54,14 +54,14 @@ e.g. `DebitAccount_Test`, `CreditAccount_Test`
 
 #### Interfaces
 
-Interface names follow the same rules as classes.  
+Interface names follow the same rules as classes.
 
-Where the interface is describing the ability to be used in a certain way, the interface name SHOULD be an adjective and end with the suffix `ible` or `able`.  
+Where the interface is describing the ability to be used in a certain way, the interface name SHOULD be an adjective and end with the suffix `ible` or `able`.
 e.g. `Batchable`, `Schedulable`, `Iterable`
 
 ### Variables
 
-Variable names MUST be mixed case with a lowercase first letter, with each consecutive word starting with a capital letter (camelCase). This rule applies to instance and class variables. They MUST not start with an underscore (`_`), or a dollar sign (`$`), though both are permitted in Apex. You SHOULD avoid using special characters in variable names. Variable names SHOULD be short yet meaningful - the name of a variable SHOULD indicate the intent of its use. Single letter variable names (like `i`, `j`, `k`) MUST be avoided, unless they are used as a throwaway variable in a short loop.  
+Variable names MUST be mixed case with a lowercase first letter, with each consecutive word starting with a capital letter (camelCase). This rule applies to instance and class variables. They MUST not start with an underscore (`_`), or a dollar sign (`$`), though both are permitted in Apex. You SHOULD avoid using special characters in variable names. Variable names SHOULD be short yet meaningful - the name of a variable SHOULD indicate the intent of its use. Single letter variable names (like `i`, `j`, `k`) MUST be avoided, unless they are used as a throwaway variable in a short loop.
 e.g. `paymentType`,  `donationContact`, `selectedAmount`
 
 #### Maps, Sets, Lists
@@ -75,12 +75,12 @@ Where a variable name conflicts with a reserved keyword, and an alternative vari
 
 #### Constants
 
-Constants (i.e. variables defined as `final`) are a special type of variable and a constant name MUST be all uppercase with words separated by underscores (`_`). Any other special characters in a constant name SHOULD be avoided.  
+Constants (i.e. variables defined as `final`) are a special type of variable and a constant name MUST be all uppercase with words separated by underscores (`_`). Any other special characters in a constant name SHOULD be avoided.
 e.g `MIN_WIDTH`, `UK_CURRENCY`
 
 ### Methods
 
-Method names SHOULD be a verb; an action. Like a variable name, it MUST be mixed case with a lowercase first letter, and the first letter of each subsequent word capitalised.  
+Method names SHOULD be a verb; an action. Like a variable name, it MUST be mixed case with a lowercase first letter, and the first letter of each subsequent word capitalised.
 e.g. `getRecordTypeId`, `setPersonName`, `processDocuments`
 
 ## Code Layout and Formatting
@@ -109,12 +109,12 @@ When an expression will not fit on a single line, break it according to these ge
 
 Here are some examples of breaking method calls:
 
-```java
+```apex
 someMethod(longExpression1, longExpression2, longExpression3,
            longExpression4, longExpression5);
 ```
 
-```java
+```apex
 var = someMethod1(
     longExpression1,
     someMethod2(
@@ -124,7 +124,7 @@ var = someMethod1(
 );
 ```
 
-```java
+```apex
 var = someMethod1(longExpression1,
                   someMethod2(longExpression2,
                   longExpression3));
@@ -135,12 +135,12 @@ var = someMethod1(longExpression1,
 
 Following are two examples of breaking an arithmetic expression. The first is RECOMMENDED, since the break occurs outside the parenthesised expression, which is at a higher level.
 
-```java
+```apex
 longName1 = longName2 * (longName3 + longName4 - longName5)
             + 4 * longname6; // PREFER
 ```
 
-```java
+```apex
 longName1 = longName2 * (longName3 + longName4
                          - longName5) + 4 * longname6; // AVOID
 ```
@@ -151,7 +151,7 @@ longName1 = longName2 * (longName3 + longName4
 
 Line wrapping for `if` statements SHOULD use the 8-space rule, since conventional (4 space) indentation makes it difficult to differentiate the body. For example:
 
-```java
+```apex
 // DON'T USE THIS INDENTATION
 if ((condition1 && condition2)
    || (condition3 && condition4)
@@ -160,7 +160,7 @@ if ((condition1 && condition2)
 }
 ```
 
-```java
+```apex
 // USE THIS INDENTATION INSTEAD
 if (
     (condition1 && condition2)
@@ -171,7 +171,7 @@ if (
 }
 ```
 
-```java
+```apex
 // OR THIS INDENTATION
 if ((condition1 && condition2)
         || (condition3 && condition4)
@@ -180,7 +180,7 @@ if ((condition1 && condition2)
 }
 ```
 
-```java
+```apex
 // OR USE THIS
 if ((condition1 && condition2) || (condition3 && condition4)
         ||!(condition5 && condition6)) {
@@ -192,16 +192,16 @@ if ((condition1 && condition2) || (condition3 && condition4)
 
 Here are three acceptable ways to format ternary expressions:
 
-```java
+```apex
 alpha = (aLongBooleanExpression) ? beta : gamma;
 ```
 
-```java
+```apex
 alpha = (aLongBooleanExpression) ? beta
                                  : gamma;
 ```
 
-```java
+```apex
 alpha = (aLongBooleanExpression)
         ? beta
         : gamma;
@@ -211,11 +211,11 @@ alpha = (aLongBooleanExpression)
 
 When they cannot fit on a single line, SOQL queries SHOULD be broken at control statements (`FROM`, `WHERE`, `LIMIT`, etc). When multiple control statements need to be grouped together (as in WHERE conditions), they SHOULD be indented such that the body of the statements match. When selecting so many fields that the SELECT statement cannot fit on a single line, the fields SHOULD be placed each on their own line, and indented one level; the SELECT statement SHOULD NOT have any fields on its line in this case. If they cannot fit on a single line, sub-queries (whether as part of the SELECT clause or in the WHERE clause) SHOULD follow the same breaking practices as top-level queries and be indented one level. Closing parentheses (`)`) and opening parentheses (`(`) of consecutive sub-queries SHOULD be on separate lines.
 
-```java
+```apex
 List<SObject> = [SELECT Id FROM SObject];
 ```
 
-```java
+```apex
 List<SObject> = [
     SELECT
         Id,
@@ -230,7 +230,7 @@ List<SObject> = [
 ];
 ```
 
-```java
+```apex
   List<SObject> = [
       SELECT
           Id,
@@ -263,17 +263,17 @@ List<SObject> = [
 
 When a custom variable getter and/or setter is used, the entire getter/setter block SHOULD be broken so that it matches the formatting of any other function. Inline getters and setters, even very short ones (other than the defaults), are NOT RECOMMENDED.
 
-```java
+```apex
 // default inline getter/setter is OK
 public Integer myInt { get; set; }
 ```
 
-```java
+```apex
 // AVOID THIS
 public Integer myInt { get { return 1; }; set; }
 ```
 
-```java
+```apex
 // DO THIS INSTEAD
 public Integer myInt {
     get {
@@ -287,7 +287,7 @@ public Integer myInt {
 
 You SHOULD put variable declarations only at the beginning of blocks. A block is any code surrounded by curly braces `{` and `}`. Don't wait to declare variables until its first use; it can confuse the unwary programmer and hamper code portability.
 
-```java
+```apex
 private void myMethod() {
     Integer int1 = 0;         // beginning of method block
 
@@ -300,7 +300,7 @@ private void myMethod() {
 
 The one exception to the rule is indices of `for` loops, which MAY be declared in the `for` statement:
 
-```java
+```apex
 for (Integer i = 0; i < maxLoops; i++) {
     ...
 }
@@ -308,7 +308,7 @@ for (Integer i = 0; i < maxLoops; i++) {
 
 Avoid local declarations that hide declarations at higher levels (termed 'shadowing'). For example, do not declare the same variable name in an inner block:
 
-```java
+```apex
 Integer count;
 ...
 myMethod() {
@@ -328,7 +328,7 @@ When coding Apex classes and interfaces, the following formatting rules SHOULD b
 * Open brace `{` appears at the end of the same line as the declaration statement
 * Closing brace `}` starts a line by itself indented to match its corresponding opening statement - except when it is a null statement; the `}` SHOULD appear immediately after the `{`
 
-```java
+```apex
 class Sample extends Object {
     Integer ivar1;
     Integer ivar2;
@@ -346,13 +346,13 @@ class Sample extends Object {
 
 The if-else class of statements SHOULD have the following form:
 
-```java
+```apex
 if (condition) {
     statements;
 }
 ```
 
-```java
+```apex
 if (condition) {
     statements;
 } else {
@@ -360,7 +360,7 @@ if (condition) {
 }
 ```
 
-```java
+```apex
 if (condition) {
     statements;
 } else if (condition) {
@@ -372,7 +372,7 @@ if (condition) {
 
 Note: `if` statements MUST always use braces `{}`. Avoid the following error-prone form:
 
-```java
+```apex
 if (condition) // AVOID! THIS OMITS THE BRACES {}!
     statements;
 ```
@@ -381,21 +381,21 @@ if (condition) // AVOID! THIS OMITS THE BRACES {}!
 
 A for loop SHOULD have the following format:
 
-```java
+```apex
 // traditional for loop
 for (initStatement; exitCondition; incrementStatement) {
     // code block
 }
 ```
 
-```java
+```apex
 // set iteration for loop
 for (variable : listOrSet) {
     // code block
 }
 ```
 
-```java
+```apex
 // SOQL for loop
 for (variable : [soql query]) {
     // code block
@@ -404,7 +404,7 @@ for (variable : [soql query]) {
 
 You SHOULD break a SOQL query into multiple lines if it is a long query.
 
-```java
+```apex
 // SOQL for loop
 for (variable : [
     SELECT Fields
@@ -419,7 +419,7 @@ for (variable : [
 
 A `try-catch` statement SHOULD have the following format:
 
-```java
+```apex
 try {
     statements;
 } catch (ExceptionClass e) {
@@ -429,7 +429,7 @@ try {
 
 A try-catch statement MAY also be followed by finally, which executes regardless of whether or not the try block has completed successfully.
 
-```java
+```apex
 try {
     statements;
 } catch (ExceptionClass e) {
@@ -443,15 +443,15 @@ try {
 
 Salesforce keywords, such as DML operators and SOQL statements SHOULD be capitalised.
 
-```java
+```apex
 List<Contact> conList = [SELECT Id FROM Contact WHERE condition];
 ```
 
-```java
+```apex
 UPDATE conList;
 ```
 
-```java
+```apex
 trigger ContactTrigger on Contact (before INSERT, before UPDATE) {
 ```
 
@@ -475,13 +475,13 @@ One blank line SHOULD be used in the following circumstances:
 
 Don't initialise the results of a SOQL query into a list. A SOQL query always returns a list.
 
-```java
+```apex
 List<SObject> sobjList = new List<SObject>([SELECT Id FROM SObject]);
 ```
 
 Don't check if a list is empty before performing DML. Performing DML on an empty list does not count towards DML limits.
 
-```java
+```apex
 if (!conList.isEmpty()) {
     INSERT conList;
 }
@@ -490,7 +490,7 @@ if (!conList.isEmpty()) {
 When querying for a record, don't run the query and check that the resulting list is not empty, and use the first result. Always iterate over the result list, or properly handle multiple returned records.
 
 
-```java
+```apex
 // BAD
 List<Contact> conList = [SELECT Id FROM Contact WHERE Conditions];
 if (!conList.isEmpty()) {
@@ -498,7 +498,7 @@ if (!conList.isEmpty()) {
 }
 ```
 
-```java
+```apex
 // GOOD
 for (Contact c : [SELECT Id FROM Contact WHERE Conditions]) {
     con = c;
@@ -507,19 +507,19 @@ for (Contact c : [SELECT Id FROM Contact WHERE Conditions]) {
 
 Always query for the Id of an SObject in SOQL, even if you're not going to explicitly use it later.
 
-```java
+```apex
 List<Contact> conList = [SELECT Id, Fields... FROM Contact];
 ```
 
 Avoid instantiating an SObject and setting its properties later.
 
-```java
+```apex
 // BAD
 Contact con = new Contact();
 con.LastName = 'Jackman';
 ```
 
-```java
+```apex
 // GOOD
 Contact con = new Contact(
   LastName = 'Jackman'
@@ -528,7 +528,7 @@ Contact con = new Contact(
 
 Do not prefix instance variables with `m_`.
 
-```java
+```apex
 class SomeClass {
     public String m_someString;
 }
